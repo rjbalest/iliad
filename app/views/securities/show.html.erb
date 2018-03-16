@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ticker:</strong>
+  <%= @security.ticker %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @security.name %>
+</p>
+
+<%= link_to 'Edit', edit_security_path(@security) %> |
+<%= link_to 'Back', securities_path %>

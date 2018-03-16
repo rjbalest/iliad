@@ -1,0 +1,27 @@
+<%= form_with(model: security, local: true) do |form| %>
+  <% if security.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(security.errors.count, "error") %> prohibited this security from being saved:</h2>
+
+      <ul>
+      <% security.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :ticker %>
+    <%= form.text_field :ticker, id: :security_ticker %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :security_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

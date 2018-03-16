@@ -1,0 +1,8 @@
+<tr>
+  <td><%= position.security.ticker %></td>
+  <td><%= position.shares %></td>
+  <td><%= position.asof %></td>
+  <td><%= link_to 'Show', position %></td>
+  <td><%= link_to 'Edit', edit_position_path(position) %></td>
+  <td><%= link_to 'Destroy', position, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>

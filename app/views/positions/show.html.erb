@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Portfolio:</strong>
+  <%= @position.portfolio %>
+</p>
+
+<p>
+  <strong>Security:</strong>
+  <%= @position.security %>
+</p>
+
+<p>
+  <strong>Shares:</strong>
+  <%= @position.shares %>
+</p>
+
+<p>
+  <strong>Asof:</strong>
+  <%= @position.asof %>
+</p>
+
+<%= link_to 'Edit', edit_position_path(@position) %> |
+<%= link_to 'Back', positions_path %>

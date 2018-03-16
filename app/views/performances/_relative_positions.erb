@@ -1,0 +1,25 @@
+<table class="table table-striped table-bordered">
+  <thead>
+  <tr>
+    <th>Position</th>
+    <th>Size (%)</th>
+    <th>Shares</th>
+    <th>Value</th>
+    <th>Basis</th>
+    <th>Price</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% positions.each do |pos| %>
+      <tr>
+        <td><%= pos[:ticker] %></td>
+        <td><%= "%.2f" % pos[:percentage] %></td>
+        <td><%= pos[:shares] %></td>
+        <td><%= "%.2f" % pos[:value] %></td>
+        <td><%= "%.2f" % pos[:basis] %></td>
+        <td><%= "%.2f" % pos[:price] %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

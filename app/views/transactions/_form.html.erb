@@ -1,0 +1,62 @@
+<%= form_with(model: transaction, local: true) do |form| %>
+  <% if transaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+
+      <ul>
+      <% transaction.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :portfolio %>
+    <%= form.text_field :portfolio, id: :transaction_portfolio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.datetime_select :date, id: :transaction_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ticker %>
+    <%= form.text_field :ticker, id: :transaction_ticker %>
+  </div>
+
+  <div class="field">
+    <%= form.label :action %>
+    <%= form.text_field :action, id: :transaction_action %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description, id: :transaction_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.text_field :quantity, id: :transaction_quantity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price, id: :transaction_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fee %>
+    <%= form.text_field :fee, id: :transaction_fee %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.text_field :amount, id: :transaction_amount %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

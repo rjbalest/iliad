@@ -1,0 +1,76 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Performance for portfolio <%= @p.portfolio.label %></h1>
+
+  <div class="container">
+    <div class="row">
+      <h4>Period from:</h4>
+      <div class="col-md-4 col-xs-12">
+        <div id="reportrange" class="pull-right dropdown-toggle" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+          <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+          <span></span>
+        </div>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <form class="form-inline" action="/performances/<%= @portfolio.id %>">
+        <div class="form-group">
+          <input type="hidden" class="form-control" id="start_date" placeholder="" name="start_date">
+        </div>
+        <div class="form-group">
+          <input type="hidden" class="form-control" id="end_date" placeholder="" name="end_date">
+        </div>
+        <button type="submit" class="btn btn-outline-primary">Rerun</button>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      Change in value: <%= "%.2f%" % @p.percentage_change %>
+    </div>
+  </div>
+  <br>
+
+<%= render 'relative_positions', positions: @relative_positions_end %>
+<br>
+<%= render 'relative_positions', positions: @relative_positions_start %>
+<br>
+
+
+<script type="text/javascript">
+  $(function() {
+
+    var start = moment('<%= @p.start_date %>', 'YYYY-MM-DD');
+    var end = moment('<%= @p.end_date %>', 'YYYY-MM-DD');
+
+    function cb(start, end) {
+      $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+      $('#start_date').val(start.format('YYYY-MM-DD'));
+      $('#end_date').val(end.format('YYYY-MM-DD'));
+    }
+
+    $('#reportrange').daterangepicker({
+      startDate: start,
+      endDate: end,
+      ranges: {
+        'Today': [moment(), moment()],
+        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+        'This Month': [moment().startOf('month'), moment().endOf('month')],
+        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+        'This Year': [moment().startOf('year'), moment()],
+        'Last Year': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf('year')]
+      }
+    }, cb);
+
+    cb(start, end);
+
+  });
+</script>
+
+<script type="text/javascript">
+  $(function () {
+    $('#datetimepicker1').daterangepicker();
+  });
+</script>
+
+<%= link_to 'Back', @portfolio %>
