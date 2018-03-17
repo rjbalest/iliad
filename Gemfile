@@ -18,7 +18,6 @@ group :development, :test do
   gem 'selenium-webdriver'
 end
 group :development do
-  ruby '2.3.1'
   gem 'puma', '~> 3.7'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
