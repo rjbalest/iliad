@@ -56,6 +56,6 @@ production:
   encoding: unicode
   database: rails-devise_production
   pool:     5
-  username: rails-devise
+  username: iliadmin
   password: letmein!
   template: template0
