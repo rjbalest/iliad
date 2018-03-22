@@ -1,5 +1,5 @@
 require 'csv'
-require 'YAML'
+require 'yaml'
 require 'json'
 require 'rest-client'
 
