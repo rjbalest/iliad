@@ -83,6 +83,7 @@ Rails.application.configure do
     password: ENV["SMTP_PASSWORD"]
   }
   # ActionMailer Config
+  config.action_mailer.default_options = {from: 'russell.balest@gmail.com'}
   config.action_mailer.default_url_options = { :host => Rails.application.secrets.domain_name }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
