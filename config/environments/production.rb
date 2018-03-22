@@ -77,7 +77,7 @@ Rails.application.configure do
     address: ENV["SMTP_HOSTNAME"],
     port: 587,
     domain: Rails.application.secrets.domain_name,
-    authentication: "plain",
+    authentication: "login",
     enable_starttls_auto: true,
     user_name: ENV["SMTP_USERNAME"],
     password: ENV["SMTP_PASSWORD"]
