@@ -48,8 +48,8 @@ Rails.application.configure do
     domain: "balest.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "russell@balest.com",
-    password: "Cel21Jad+LUXSCI"
+    user_name: "",
+    password: ""
   }
   # domain: Rails.application.secrets.domain_name,
   # user_name: Rails.application.secrets.email_provider_username,
