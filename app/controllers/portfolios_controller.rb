@@ -43,7 +43,20 @@ class PortfoliosController < ApplicationController
   # POST /portfolios
   # POST /portfolios.json
   def create
-    @portfolio = Portfolio.new(portfolio_params)
+
+    file = portfolio_params["positions"]
+    txfile = portfolio_params["transactions"]
+
+    label = portfolio_params["label"]
+
+    User.current = current_user
+    @portfolio = Position.import_csv(file.path)
+
+    @portfolio = Transaction.import_csv(txfile.path)
+
+    #@portfolio = Portfolio.new(portfolio_params)
+    #@portfolio.user = current_user
+    @portfolio.label = label
 
     respond_to do |format|
       if @portfolio.save
@@ -88,6 +101,6 @@ class PortfoliosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def portfolio_params
-      params.require(:portfolio).permit(:label)
+      params.require(:portfolio).permit(:label, :positions, :transactions)
     end
 end

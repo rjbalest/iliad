@@ -6,8 +6,10 @@
 </p>
 
 <h1>Positions</h1>
-
+<% unless @watched_positions.empty? %>
 <%= render 'performances/relative_positions', positions: @watched_positions %>
+<% else %>
+<% end %>
 
 <!--table id="portfolio-positions" class="table table-striped table-bordered">
   <thead>

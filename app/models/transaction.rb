@@ -75,6 +75,7 @@ class Transaction < ApplicationRecord
       portfolio.transactions_end = to_date
     end
     portfolio.save
+    portfolio
   end
 
 end

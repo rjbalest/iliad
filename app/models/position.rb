@@ -58,6 +58,7 @@ class Position < ApplicationRecord
     portfolio.positions_asof = asof_date
     portfolio.cash = cash
     portfolio.save
+    portfolio
   end
 
 end
