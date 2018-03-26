@@ -8,6 +8,9 @@ module Investor
   Debug = true
   Verbose = true
 
+  QuoteServicePort="80"
+  QuoteServiceUrl="localhost"
+
   class Quotes
     # Use Yahoo to lookup current prices
     @@registry = []
@@ -41,7 +44,7 @@ module Investor
       clause
     end
     def self.url(ticker,date)
-      url = "http://localhost:3000/query/%s?date=%s" % [ticker,date]
+      url = "http://%s/query/%s:%s?date=%s" % [QuoteServiceHost, QuoteServicePort, ticker,date]
       url
     end
     def self.fetch_quote(ticker,date=nil)
