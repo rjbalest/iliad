@@ -9,7 +9,7 @@ module Investor
   Verbose = true
 
   QuoteServicePort="80"
-  QuoteServiceUrl="localhost"
+  QuoteServiceHost="localhost"
 
   class Quotes
     # Use Yahoo to lookup current prices
