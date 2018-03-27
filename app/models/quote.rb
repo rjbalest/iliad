@@ -54,13 +54,13 @@ class Quote < ApplicationRecord
       ts_data = json["Time Series (Daily)"]
 
       security = Security.find_or_create_by(:ticker=>ticker)
-
+      quotes = []
       unless ts_data.nil?
         # Select quotes newer than most recent
         ts_data.keys.select{|d| most_recent.nil? || Date.parse(d) > most_recent.date}.each do |date|
           data = ts_data[date]
 
-          q = Quote.new do |q|
+          quote = Quote.new do |q|
             q.security = security
             q.ticker = ticker
             q.date = date
@@ -73,8 +73,11 @@ class Quote < ApplicationRecord
             q.dividend = data["7. dividend amount"]
             q.split_coefficient = data["8. split coefficient"]
           end
-          q.save
+          quotes.append quote
+          # Use bulk import instead
+          #q.save
         end
+        Quote.import quotes, :validate => false
       else
         Quote.blacklist(ticker)
       end
