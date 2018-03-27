@@ -44,7 +44,7 @@ module Investor
       clause
     end
     def self.url(ticker,date)
-      url = "http://%s/query/%s:%s?date=%s" % [QuoteServiceHost, QuoteServicePort, ticker,date]
+      url = "http://%s:%s/query/%s?date=%s" % [QuoteServiceHost, QuoteServicePort, ticker,date]
       url
     end
     def self.fetch_quote(ticker,date=nil)
