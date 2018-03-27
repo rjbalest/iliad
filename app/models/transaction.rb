@@ -11,6 +11,7 @@ class Transaction < ApplicationRecord
     to_date = nil
     asof_date = nil
     portfolio = nil
+    transactions = []
 
     lines = CSV.read(filename) unless filename.nil?
     lines.each do |line|
@@ -61,11 +62,13 @@ class Transaction < ApplicationRecord
             tx.fee = fee
             tx.amount = amount
           end
-          tx.save
-
+          transactions.append tx
+          #tx.save
       end
-
     end
+    # Bulk import
+    Transaction.import transactions, :validate => false
+
     # Update portfolio transaction dates
     portfolio.transactions_asof = asof_date
     if portfolio.transactions_start.nil? or from_date < portfolio.transactions_start
